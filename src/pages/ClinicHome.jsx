@@ -44,12 +44,12 @@ const stats = [
     color: '#10b981'
   },
   { 
-    name: 'Patient Diversity', 
-    value: 'Gender Split', 
+    name: 'Staff On-Duty', 
+    value: '18 / 24', 
     trend: 'neutral', 
     trendValue: 'Live', 
     chartType: 'ring-split',
-    subtitle: 'Distribution',
+    subtitle: 'Active Clinicians',
     color: '#3b82f6'
   },
 ];
@@ -200,33 +200,31 @@ export default function ClinicHome() {
           </DataCard>
         </div>
 
-        {/* Recent Patients - Clean Sidebar (HDc Reference) */}
+        {/* Sidebar Management - Doctor Info & Quick Actions */}
         <div className="lg:col-span-1 space-y-8">
-           <DataCard title="Appointment Requests" subtitle="Pending review">
-             <div className="mt-6 space-y-4">
-                {[
-                  { name: 'Leslie Alexander', type: 'Female, 25', time: 'April 12 - 9:30 am' },
-                  { name: 'Jacob Jones', type: 'Male, 32', time: 'April 12 - 10:30 am', status: 'Accepted' }
-                ].map((req, i) => (
-                  <div key={req.name} className="flex items-center justify-between p-3 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
-                    <div className="flex items-center gap-3">
-                       <div className="w-10 h-10 rounded-full bg-indigo-50 border border-indigo-100 shrink-0" />
-                       <div className="min-w-0">
-                          <p className="text-xs font-black text-slate-900 truncate tracking-tight">{req.name}</p>
-                          <p className="text-[10px] text-slate-400 font-bold mt-0.5 truncate">{req.time}</p>
-                       </div>
-                    </div>
-                    {req.status ? (
-                       <span className="px-3 py-1 bg-sky-50 text-sky-600 text-[10px] font-black rounded-lg">Accepted</span>
-                    ) : (
-                       <div className="flex gap-1">
-                          <button className="w-7 h-7 bg-indigo-500 text-white rounded-lg flex items-center justify-center text-xs shadow-md">✓</button>
-                          <button className="w-7 h-7 bg-rose-50 text-rose-500 rounded-lg flex items-center justify-center text-xs">✕</button>
-                       </div>
-                    )}
-                  </div>
-                ))}
-             </div>
+           <DataCard title="Medical Team Info" subtitle="Specialists on active duty">
+              <div className="mt-6 space-y-4">
+                 {clinicians.slice(0, 4).map((c, i) => (
+                   <div key={c.name} className="flex items-center justify-between p-3 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100 group">
+                     <div className="flex items-center gap-3">
+                        <div className={`w-10 h-10 rounded-xl ${c.bgOpacity} flex items-center justify-center font-bold ${c.color} shrink-0 group-hover:scale-110 transition-transform`}>
+                           {c.name.split('. ')[1][0]}
+                        </div>
+                        <div className="min-w-0">
+                           <p className="text-xs font-black text-slate-900 truncate tracking-tight">{c.name}</p>
+                           <p className="text-[10px] text-slate-400 font-bold mt-0.5 truncate">{c.specialty}</p>
+                        </div>
+                     </div>
+                     <div className="flex flex-col items-end shrink-0">
+                        <div className="flex items-center gap-1">
+                           <span className="text-[10px] font-black text-indigo-600 tracking-tight">{c.rating}</span>
+                           <span className="text-[10px] text-amber-400">★</span>
+                        </div>
+                        <span className="text-[9px] text-slate-400 font-bold uppercase mt-0.5">{c.appointmentsToday} appts</span>
+                     </div>
+                   </div>
+                 ))}
+              </div>
            </DataCard>
 
            <DataCard title="Quick Action Hub" subtitle="Frequently used tasks">
