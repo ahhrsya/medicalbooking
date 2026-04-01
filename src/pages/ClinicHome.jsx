@@ -229,25 +229,24 @@ export default function ClinicHome() {
              </div>
            </DataCard>
 
-           <DataCard title="On-Duty Clinicians" subtitle="Currently active today">
-              <div className="mt-6 space-y-4">
-                 {clinicians.slice(0, 3).map(c => (
-                   <div key={c.name} className="flex items-center justify-between group cursor-pointer p-1">
-                      <div className="flex items-center gap-3">
-                         <div className={`w-10 h-10 rounded-xl ${c.bgOpacity} flex items-center justify-center font-bold ${c.color} shrink-0 group-hover:scale-110 transition-transform`}>
-                            {c.name.split('. ')[1][0]}
-                         </div>
-                         <div>
-                            <p className="text-xs font-black text-slate-900 tracking-tight">{c.name}</p>
-                            <p className="text-[10px] text-slate-400 font-bold mt-0.5 leading-none">{c.specialty} &bull; {c.appointmentsToday} appts</p>
-                         </div>
+           <DataCard title="Quick Action Hub" subtitle="Frequently used tasks">
+              <div className="mt-6 grid grid-cols-2 gap-3">
+                 {[
+                   { name: 'Add Patient', icon: PlusIcon, color: 'bg-indigo-50 text-indigo-600' },
+                   { name: 'Schedule', icon: CalendarIcon, color: 'bg-emerald-50 text-emerald-600' },
+                   { name: 'Reports', icon: ChartBarIcon, color: 'bg-sky-50 text-sky-600' },
+                   { name: 'Staff App', icon: UsersIcon, color: 'bg-rose-50 text-rose-600' }
+                 ].map(action => (
+                   <button key={action.name} className="flex flex-col items-center justify-center p-4 rounded-2xl bg-white border border-slate-100 hover:border-indigo-100 hover:shadow-md transition-all group">
+                      <div className={`w-10 h-10 rounded-xl ${action.color} flex items-center justify-center mb-2 group-hover:scale-110 transition-transform`}>
+                         <action.icon className="w-5 h-5" />
                       </div>
-                      <div className="flex items-center gap-1.5 min-w-[50px] justify-end">
-                         <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                         <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Active</span>
-                      </div>
-                   </div>
+                      <span className="text-[10px] font-black text-slate-800 uppercase tracking-tighter text-center">{action.name}</span>
+                   </button>
                  ))}
+              </div>
+              <div className="mt-4 p-3 bg-slate-50 rounded-xl border border-dashed border-slate-200">
+                 <p className="text-[9px] font-bold text-slate-400 uppercase text-center tracking-widest">More actions available</p>
               </div>
            </DataCard>
         </div>
