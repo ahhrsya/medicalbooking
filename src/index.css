@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-teal: #0d9488;
+  --color-brand-teal-light: #ccfbf1;
+  --color-brand-teal-dark: #0f766e;
+  
+  --color-bg-soft: #f0fdfa;
+  --color-bg-page: #f8fafc;
+  
+  --color-appt-confirmed: #0d9488;
+  --color-appt-pending: #f59e0b;
+  --color-appt-completed: #6b7280;
+  --color-appt-cancelled: #ef4444;
+  --color-appt-noshow: #dc2626;
+  --color-status-checkedin: #10b981;
+
+  /* Clinician lanes */
+  --color-clinician-1: #0d9488;
+  --color-clinician-2: #7c3aed;
+  --color-clinician-3: #ea580c;
+  --color-clinician-4: #0369a1;
+  --color-clinician-5: #65a30d;
+  --color-clinician-6: #db2777;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-plus-jakarta: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg-page);
+    font-family: var(--font-sans);
+    color: #111827;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-plus-jakarta);
+  }
+}
