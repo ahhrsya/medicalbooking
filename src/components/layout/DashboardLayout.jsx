@@ -4,12 +4,19 @@ import TopBar from './TopBar';
 
 export default function DashboardLayout() {
   return (
-    <div className="flex min-h-screen bg-bg-page font-sans">
-      <Sidebar />
-      <div className="flex-1 ml-[260px] flex flex-col">
+    <div className="flex min-h-screen bg-bg-soft font-inter">
+      {/* Sidebar is fixed 256px (w-64) */}
+      <div className="fixed inset-y-0 left-0 w-64">
+        <Sidebar />
+      </div>
+      
+      {/* Main Content Area */}
+      <div className="flex-1 pl-64 flex flex-col">
         <TopBar />
-        <main className="flex-1 container max-w-7xl mx-auto px-6 py-6 overflow-auto">
-          <Outlet />
+        <main className="flex-1 px-8 py-4 overflow-auto">
+          <div className="max-w-[1400px] mx-auto">
+            <Outlet />
+          </div>
         </main>
       </div>
     </div>

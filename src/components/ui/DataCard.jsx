@@ -1,16 +1,30 @@
-export default function DataCard({ children, title, subtitle, className = '', headerAction }) {
+import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
+
+export default function DataCard({ 
+  title, 
+  subtitle, 
+  children, 
+  className = '', 
+  headerAction 
+}) {
   return (
-    <div className={`bg-white rounded-2xl border border-[#e5e4e7] shadow-sm ${className}`}>
-      {(title || subtitle || headerAction) && (
-        <div className="px-6 py-5 border-b border-[#e5e4e7] flex items-center justify-between">
+    <div className={`bg-white rounded-[1.25rem] border border-slate-100 shadow-soft p-6 transition-all duration-300 hover:border-slate-200 ${className}`}>
+      {(title || headerAction) && (
+        <div className="flex items-center justify-between mb-4">
           <div>
-            {title && <h3 className="text-lg font-semibold text-gray-900 leading-6">{title}</h3>}
-            {subtitle && <p className="mt-1 text-sm text-gray-500">{subtitle}</p>}
+            {title && <h3 className="text-base font-bold font-plus-jakarta text-slate-900 tracking-tight">{title}</h3>}
+            {subtitle && <p className="text-xs text-slate-400 font-medium mt-0.5">{subtitle}</p>}
           </div>
-          {headerAction && <div>{headerAction}</div>}
+          <div className="flex items-center gap-2">
+            {headerAction || (
+              <button className="p-1.5 hover:bg-slate-50 text-slate-400 rounded-lg transition-colors">
+                <EllipsisHorizontalIcon className="w-5 h-5" />
+              </button>
+            )}
+          </div>
         </div>
       )}
-      <div className="p-6">{children}</div>
+      {children}
     </div>
   );
 }
