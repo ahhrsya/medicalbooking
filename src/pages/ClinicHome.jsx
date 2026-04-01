@@ -62,7 +62,7 @@ export default function ClinicHome() {
       {/* Refined Header */}
       <div className="flex items-center justify-between py-4">
          <div>
-            <h1 className="text-3xl font-black font-plus-jakarta text-slate-900 tracking-tight">Dashboard Overview</h1>
+            <h1 className="text-3xl font-black font-plus-jakarta text-slate-900 tracking-tight">Physician Hub 2.0</h1>
             <p className="text-sm text-slate-500 font-medium mt-1">Real-time clinical insights and patient management.</p>
          </div>
          <div className="flex items-center gap-3">
